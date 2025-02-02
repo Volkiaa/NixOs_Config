@@ -118,7 +118,7 @@
 
   #Shell Aliases
   environment.shellAliases = {
-  nixrebuild = "sudo nixos-rebuild switch --flake ~/.nixos-config/#nixos";
+  nixrebuild = "sudo nixos-rebuild switch --flake ~/.nixos-config/\#nixos";
   nixedit = "cd ~/.nixos-config/";
 
 };
@@ -146,6 +146,7 @@
       STOP_CHARGE_THRESH_BAT0 = 81;
     };
   };
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -171,6 +172,8 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+
+  # Setup a systemd service to copy the Konsole theme
   system.stateVersion = "24.11"; # Did you read the comment?
 
 }
