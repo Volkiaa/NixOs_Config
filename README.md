@@ -1,1 +1,1 @@
-# NixOS_Congif
+# NixOS_Config
