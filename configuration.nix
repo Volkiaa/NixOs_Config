@@ -92,12 +92,13 @@
   users.users.amsn = {
     isNormalUser = true;
     description = "Amsn";
+    shell = pkgs.zsh;
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
     ];
   };
   programs.zsh.enable = true ;
-  
+  users.defaultUserShell = pkgs.zsh; 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
