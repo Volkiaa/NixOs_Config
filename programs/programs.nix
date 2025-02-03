@@ -34,7 +34,7 @@ rec {
 
   _cli = [
    
-    htop 
+    btop 
     direnv
     curl
     wget
@@ -50,6 +50,7 @@ rec {
 
   _dev = [
 
+    lazygit
     git 
     vscode.fhs
 
