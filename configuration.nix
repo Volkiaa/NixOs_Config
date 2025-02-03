@@ -8,7 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./programs/programs_config.nix
+      #./programs/programs_config.nix
     ];
 
   # Bootloader.
@@ -119,8 +119,10 @@
 
   #Shell Aliases
   environment.shellAliases = {
-  nixrebuild = "sudo nixos-rebuild switch --flake ~/.nixos-config/\#AmsNix";
+  nixrebuild = "nixedit && home-manager switch --flake .";
   nixedit = "cd ~/.nixos-config/";
+  ls = "eza --icons";
+  ll = "eza --icons -l";
 
 };
 
