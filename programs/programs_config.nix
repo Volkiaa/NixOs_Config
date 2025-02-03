@@ -4,7 +4,7 @@
 {
  programs = {
    
-   # Configure ZSH
+   # Configure ZSH with custom settings
    zsh = {
      enable = true;
      autosuggestions.enable = true;
