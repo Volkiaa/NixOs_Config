@@ -61,7 +61,13 @@
 
   # Configure console keymap
   console.keyMap = "us-acentos";
-
+ 
+  # Enable fonts
+  fonts.enableDefaultPackages = true;
+  fonts.packages = with pkgs; [
+  	nerd-fonts.fira-code
+	nerd-fonts.droid-sans-mono
+  ];
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
@@ -116,15 +122,6 @@
 	options = "--delete-older-than +3";
   };
   nix.settings.auto-optimise-store = true; 
-
-  #Shell Aliases
-  environment.shellAliases = {
-  nixrebuild = "nixedit && home-manager switch --flake .";
-  nixedit = "cd ~/.nixos-config/";
-  ls = "eza --icons";
-  ll = "eza --icons -l";
-
-};
 
   #Power Management
   powerManagement.powertop.enable = true;                           # enable powertop auto tuning on startup.
