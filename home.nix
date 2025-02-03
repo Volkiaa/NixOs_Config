@@ -33,6 +33,7 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
+    pkgs.tmux
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -77,22 +78,30 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     shellAliases = {
-      nixrehome = "nixedit && home-manager switch --flake .";
-      nixreflake = "nixedit && sudo nixos-rebuild --flake .";
+      nixrehome = "nixedit && home-manager switch --flake .#amsn";
+      nixreflake = "nixedit && sudo nixos-rebuild switch --flake .#AmsNix";
+      nixrebuild = "nixedit && sudo nixos-rebuild switch --flake .#AmsNix && home-manager switch --flake .#amsn";
       nixedit = "cd ~/.nixos-config/";
       ls = "eza --icons";
       ll = "eza --icons -l";
+      ".." = "cd ..";
+      "..." = "cd ../..";
+      cat = "bat --paging=never";
     };
     oh-my-zsh   =  {
        enable  =  true;
-       theme   =  "robbyrussell";
        plugins = [
         "git"
         "history"
+	"colored-man-pages"
           ];
         };
   };
-
+  programs.oh-my-posh ={
+	enable = true;
+	enableZshIntegration = true;
+	useTheme = "atomic"; 
+  };
   programs.fzf ={
     enable = true;
     enableZshIntegration = true;
