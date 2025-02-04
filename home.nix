@@ -1,6 +1,11 @@
 { config, pkgs, ... }:
 
 {
+
+  imports = [
+    ./home/sh.nix
+  ];
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "amsn";
@@ -18,21 +23,6 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    #pkgs.hello
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
     pkgs.tmux
   ];
 
@@ -73,35 +63,7 @@
   
 
   # Manage ZSH
-  programs.zsh ={
-    enable = true;
-    autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
-    shellAliases = {
-      nixrehome = "nixedit && home-manager switch --flake .#amsn";
-      nixreflake = "nixedit && sudo nixos-rebuild switch --flake .#AmsNix";
-      nixrebuild = "nixedit && sudo nixos-rebuild switch --flake .#AmsNix && home-manager switch --flake .#amsn";
-      nixedit = "cd ~/.nixos-config/";
-      ls = "eza --icons";
-      ll = "eza --icons -l";
-      ".." = "cd ..";
-      "..." = "cd ../..";
-      cat = "bat --paging=never";
-    };
-    oh-my-zsh   =  {
-       enable  =  true;
-       plugins = [
-        "git"
-        "history"
-	"colored-man-pages"
-          ];
-        };
-  };
-  programs.oh-my-posh ={
-	enable = true;
-	enableZshIntegration = true;
-	useTheme = "atomic"; 
-  };
+  
   programs.fzf ={
     enable = true;
     enableZshIntegration = true;
