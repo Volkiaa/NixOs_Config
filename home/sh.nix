@@ -17,6 +17,7 @@ programs.zsh ={
       ".." = "cd ..";
       "..." = "cd ../..";
       cat = "bat --paging=never";
+      vim = "lvim";
     };
     oh-my-zsh   =  {
        enable  =  true;
