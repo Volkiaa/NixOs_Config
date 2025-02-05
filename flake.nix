@@ -7,7 +7,6 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     home-manager.url= "github:nix-community/home-manager/master";
     #home.manager.inputs.nixpkgs.follows= "nixpkgs";
-
   };
 
   outputs = { self, nixpkgs, nixos-hardware, home-manager, ... }:

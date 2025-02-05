@@ -108,12 +108,46 @@
   nixpkgs.config.allowUnfree = true;
 
   #Use lists in programs/programs.nix to import packages
-  environment.systemPackages = with import ./programs/programs.nix {inherit pkgs config ; }; package-set;
+  environment.systemPackages = [
+
+    #NixTools
+    # nix-shell into zsh 
+    pkgs.any-nix-shell
+    pkgs.nix-init
+    pkgs.nh
+    # the below 2 are part of nh, but useful on their own too
+    # nom - a drop-in replacement for nix command
+    pkgs.nix-output-monitor
+    # nvd can be used to e.g. diff system generations i.e.:
+    # nvd diff /nix/var/nix/profiles/system-{463,464}-link
+    pkgs.nvd 
+
+     #Browsers
+    pkgs.firefox
+    
+    #CliTools   
+    pkgs.btop 
+    pkgs.direnv
+    pkgs.curl
+    pkgs.wget
+    pkgs.eza
+    pkgs.unzip
+    pkgs.fzf
+    pkgs.bat
+    pkgs.fd
+    pkgs.neofetch
+    pkgs.zsh
+    pkgs.vim
+    
+    #DevTools
+    pkgs.lazygit
+    pkgs.git 
+    pkgs.vscode.fhs
+];
 
   # Automatic Update
   system.autoUpgrade.enable = true;
   system.autoUpgrade.dates = "weekly";
-
   # Automatic Cleanup
   nix.gc = {
 	automatic = true;
@@ -146,6 +180,8 @@
     };
   };
   
+
+
   system.stateVersion = "24.11"; # Actual System Version
 
 }
