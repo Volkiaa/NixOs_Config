@@ -138,7 +138,6 @@
     pkgs.neofetch
     pkgs.zsh
     pkgs.vim
-    pkgs.lunarvim 
     #DevTools
     pkgs.lazygit
     pkgs.git 
